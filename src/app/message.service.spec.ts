@@ -11,9 +11,25 @@ describe("Message Service", () => {
   });
 
   it("should add a message when add is called", () => {
+    // arrange - sanitizing our test so that service is not affected by other tests
+    service = new MessageService();
     // act
     service.add("message1");
     // assert
     expect(service.messages.length).toBe(1);
+  });
+
+  it("should remove all messages when clear is called", () => {
+    // arrange - sanitizing our test so that service is not affected by other tests
+    service = new MessageService();
+    service.add("message1");
+    service.add("message2");
+    service.add("message3");
+
+    // act
+    service.clear();
+
+    // assert
+    expect(service.messages.length).toBe(0);
   });
 });
