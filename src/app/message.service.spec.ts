@@ -2,13 +2,10 @@ import { MessageService } from "./message.service";
 describe("Message Service", () => {
   let service: MessageService;
 
-  // slight violation of our 'tell a story rule' that the array is pulled out of the it test
-  beforeEach(() => {
-    // arrange
-    service = new MessageService();
-  });
-
   it("should have no messages to start", () => {
+    // arrange && act because service.messages is initialized to [] on instantiation
+    service = new MessageService();
+
     // assert
     expect(service.messages.length).toBe(0);
   });
