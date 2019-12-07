@@ -39,4 +39,17 @@ describe("Heroes Component", () => {
       expect(component.heroes[2]).toBe(undefined);
     });
   });
+
+  it("should call deleteHero", () => {
+    mockHeroService.deleteHero.and.returnValue(of(true));
+    component.heroes = HEROES;
+
+    //   console.log("component.heroes:", component.heroes);
+    //   expect(component.heroes.length).toBe(3);
+    //   expect(component.heroes[2].name).toBe("SuperDude");
+
+    component.delete(HEROES[2]);
+
+    expect(mockHeroService.deleteHero).toHaveBeenCalled();
+  });
 });
